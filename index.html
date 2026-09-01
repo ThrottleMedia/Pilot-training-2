@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aviator Academy</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- SIDEBAR -->
+
+    <aside id="sidebar">
+
+        <div class="logo">
+            <div class="logoPlane">✈</div>
+
+            <div>
+                <h1>AVIATOR</h1>
+                <span>ACADEMY</span>
+            </div>
+        </div>
+
+        <nav>
+
+            <button onclick="showPage('dashboard')" class="nav active">
+                🏠 Dashboard
+            </button>
+
+            <p class="navTitle">GROUND SCHOOL</p>
+
+            <button onclick="showPage('subjects')" class="nav">
+                📚 Subjects
+            </button>
+
+            <button onclick="showPage('flashcards')" class="nav">
+                🧠 Flashcards
+            </button>
+
+            <button onclick="showPage('alphabet')" class="nav">
+                🔤 Phonetic Alphabet
+            </button>
+
+            <button onclick="showPage('abbreviations')" class="nav">
+                📖 Abbreviations
+            </button>
+
+            <p class="navTitle">EXAMS</p>
+
+            <button onclick="startExam(10)" class="nav">
+                📝 10 Question Quiz
+            </button>
+
+            <button onclick="startExam(25)" class="nav">
+                📋 25 Question Quiz
+            </button>
+
+            <button onclick="startExam(50)" class="nav">
+                📄 50 Question Exam
+            </button>
+
+            <button onclick="startExam(100)" class="nav">
+                🎓 100 Question Mock
+            </button>
+
+            <p class="navTitle">TOOLS</p>
+
+            <button onclick="showPage('calculators')" class="nav">
+                🧮 Calculators
+            </button>
+
+            <button onclick="showPage('metar')" class="nav">
+                🌦 METAR / TAF
+            </button>
+
+            <button onclick="showPage('progress')" class="nav">
+                📊 My Progress
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main>
+
+        <header>
+
+            <button id="menuButton" onclick="toggleMenu()">☰</button>
+
+            <div>
+                <h2 id="pageTitle">Pilot Training Dashboard</h2>
+                <p>Study smarter. Fly safer.</p>
+            </div>
+
+            <div class="headerRight">
+
+                <div class="xp">
+                    ⭐ <span id="xp">0</span> XP
+                </div>
+
+                <div class="level">
+                    LEVEL <span id="level">1</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboard" class="page">
+
+            <div class="hero">
+
+                <div>
+
+                    <span class="eyebrow">
+                        PILOT TRAINING SYSTEM
+                    </span>
+
+                    <h1>
+                        Become the pilot<br>
+                        you were meant to be.
+                    </h1>
+
+                    <p>
+                        Build your aviation knowledge, practise your
+                        theory and test yourself across the major
+                        pilot-training subjects.
+                    </p>
+
+                    <div class="heroButtons">
+
+                        <button
+                            class="primary"
+                            onclick="startExam(10)"
+                        >
+                            Start Practice Quiz
+                        </button>
+
+                        <button
+                            class="secondary"
+                            onclick="showPage('subjects')"
+                        >
+                            Study Subjects
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="heroPlane">
+                    ✈️
+                </div>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="statCard">
+                    <span>📚</span>
+                    <strong id="totalQuestions">0</strong>
+                    <small>Questions</small>
+                </div>
+
+                <div class="statCard">
+                    <span>✅</span>
+                    <strong id="answeredQuestions">0</strong>
+                    <small>Answered</small>
+                </div>
+
+                <div class="statCard">
+                    <span>🎯</span>
+                    <strong id="averageScore">0%</strong>
+                    <small>Average Score</small>
+                </div>
+
+                <div class="statCard">
+                    <span>🔥</span>
+                    <strong id="streak">0</strong>
+                    <small>Study Streak</small>
+                </div>
+
+            </div>
+
+
+            <div class="sectionHeading">
+
+                <div>
+                    <h2>Ground School</h2>
+                    <p>Choose a subject to start studying.</p>
+                </div>
+
+                <button
+                    class="textButton"
+                    onclick="showPage('subjects')"
+                >
+                    View all →
+                </button>
+
+            </div>
+
+
+            <div
+                class="subjectGrid"
+                id="dashboardSubjects"
+            ></div>
+
+
+            <div class="sectionHeading">
+
+                <div>
+                    <h2>Quick Practice</h2>
+                    <p>Test yourself without starting a full exam.</p>
+                </div>
+
+            </div>
+
+
+            <div class="quickGrid">
+
+                <button onclick="startSubjectQuiz('meteorology')">
+                    🌦️<br>
+                    Meteorology
+                </button>
+
+                <button onclick="startSubjectQuiz('navigation')">
+                    🧭<br>
+                    Navigation
+                </button>
+
+                <button onclick="startSubjectQuiz('radio')">
+                    📻<br>
+                    Radio
+                </button>
+
+                <button onclick="startSubjectQuiz('principles')">
+                    ✈️<br>
+                    Principles of Flight
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUBJECTS -->
+
+        <section id="subjects" class="page hidden">
+
+            <div class="pageIntro">
+
+                <h1>Ground School</h1>
+
+                <p>
+                    Study the knowledge areas required during pilot
+                    training.
+                </p>
+
+            </div>
+
+            <div
+                class="subjectGrid large"
+                id="allSubjects"
+            ></div>
+
+        </section>
+
+
+        <!-- FLASHCARDS -->
+
+        <section id="flashcards" class="page hidden">
+
+            <div class="pageIntro">
+
+                <h1>🧠 Flashcards</h1>
+
+                <p>
+                    Memorise important aviation terminology.
+                </p>
+
+            </div>
+
+            <div class="flashcard">
+
+                <div class="flashContent">
+
+                    <span id="flashCategory">
+                        AVIATION
+                    </span>
+
+                    <h1 id="flashTerm">
+                        Altitude
+                    </h1>
+
+                    <p id="flashDefinition">
+                        The vertical distance of an aircraft
+                        above a reference level.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="flashControls">
+
+                <button
+                    class="secondary"
+                    onclick="previousFlashcard()"
+                >
+                    ← Previous
+                </button>
+
+                <span id="flashCounter">
+                    1 / 1
+                </span>
+
+                <button
+                    class="primary"
+                    onclick="nextFlashcard()"
+                >
+                    Next →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ALPHABET -->
+
+        <section id="alphabet" class="page hidden">
+
+            <div class="pageIntro">
+
+                <h1>🔤 ICAO Phonetic Alphabet</h1>
+
+                <p>
+                    Used to communicate letters clearly over aviation
+                    radio.
+                </p>
+
+            </div>
+
+            <div
+                class="alphabetGrid"
+                id="alphabetGrid"
+            ></div>
+
+        </section>
+
+
+        <!-- ABBREVIATIONS -->
+
+        <section id="abbreviations" class="page hidden">
+
+            <div class="pageIntro">
+
+                <h1>📖 Aviation Abbreviations</h1>
+
+                <p>
+                    Learn commonly used aviation abbreviations.
+                </p>
+
+            </div>
+
+            <div class="tableContainer">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Abbreviation</th>
+                            <th>Meaning</th>
+                            <th>Category</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="abbreviationTable"></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- CALCULATORS -->
+
+        <section id="calculators" class="page hidden">
+
+            <div class="pageIntro">
+
+                <h1>🧮 Flight Calculators</h1>
+
+                <p>
+                    Useful calculators for aviation study.
+                </p>
+
+            </div>
+
+
+            <div class="calculatorGrid">
+
+                <div class="calculator">
+
+                    <h2>Time / Distance / Speed</h2>
+
+                    <label>Distance (NM)</label>
+
+                    <input
+                        id="calcDistance"
+                        type="number"
+                    >
+
+                    <label>Ground Speed (kt)</label>
+
+                    <input
+                        id="calcSpeed"
+                        type="number"
+                    >
+
+                    <button
+                        class="primary full"
+                        onclick="calculateTime()"
+                    >
+                        Calculate
+                    </button>
+
+                    <div
+                        id="timeResult"
+                        class="result"
+                    ></div>
+
+                </div>
+
+
+                <div class="calculator">
+
+                    <h2>Fuel</h2>
+
+                    <label>Flight Time (hours)</label>
+
+                    <input
+                        id="calcHours"
+                        type="number"
+                        step="0.1"
+                    >
+
+                    <label>Fuel Burn (L/hour)</label>
+
+                    <input
+                        id="calcFuelRate"
+                        type="number"
+                    >
+
+                    <button
+                        class="primary full"
+                        onclick="calculateFuel()"
+                    >
+                        Calculate
+                    </button>
+
+                    <div
+                        id="fuelResult"
+                        class="result"
+                    ></div>
+
+                </div>
+
+
+                <div class="calculator">
+
+                    <h2>Weight & Balance</h2>
+
+                    <label>Weight (kg)</label>
+
+                    <input
+                        id="wbWeight"
+                        type="number"
+                    >
+
+                    <label>Arm (m)</label>
+
+                    <input
+                        id="wbArm"
+                        type="number"
+                        step="0.01"
+                    >
+
+                    <button
+                        class="primary full"
+                        onclick="calculateMoment()"
+                    >
+                        Calculate Moment
+                    </button>
+
+                    <div
+                        id="momentResult"
+                        class="result"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- METAR -->
+
+        <section id="metar" class="page hidden">
+
+            <div class="pageIntro">
+
+                <h1>🌦 METAR / TAF Study</h1>
+
+                <p>
+                    Learn the structure of aviation weather reports.
+                </p>
+
+            </div>
+
+            <div class="weatherCard">
+
+                <h2>METAR structure</h2>
+
+                <div class="metarExample">
+                    FAJS 011200Z 24010KT 9999 SCT030 22/14 Q1018
+                </div>
+
+                <div class="weatherBreakdown">
+
+                    <div>
+                        <strong>FAJS</strong>
+                        <span>Station identifier</span>
+                    </div>
+
+                    <div>
+                        <strong>011200Z</strong>
+                        <span>Date/time in UTC</span>
+                    </div>
+
+                    <div>
+                        <strong>24010KT</strong>
+                        <span>Wind direction/speed</span>
+                    </div>
+
+                    <div>
+                        <strong>9999</strong>
+                        <span>Visibility</span>
+                    </div>
+
+                    <div>
+                        <strong>SCT030</strong>
+                        <span>Scattered cloud at 3,000 ft</span>
+                    </div>
+
+                    <div>
+                        <strong>22/14</strong>
+                        <span>Temperature / dew point</span>
+                    </div>
+
+                    <div>
+                        <strong>Q1018</strong>
+                        <span>Pressure setting</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+
+        <section id="progress" class="page hidden">
+
+            <div class="pageIntro">
+
+                <h1>📊 My Progress</h1>
+
+                <p>
+                    Track your aviation-study progress.
+                </p>
+
+            </div>
+
+            <div class="progressOverview">
+
+                <div class="bigProgress">
+
+                    <span>Average Score</span>
+
+                    <strong id="progressScore">
+                        0%
+                    </strong>
+
+                </div>
+
+                <div class="bigProgress">
+
+                    <span>Total XP</span>
+
+                    <strong id="progressXP">
+                        0
+                    </strong>
+
+                </div>
+
+                <div class="bigProgress">
+
+                    <span>Questions</span>
+
+                    <strong id="progressAnswered">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="sectionHeading">
+
+                <h2>Subject Performance</h2>
+
+            </div>
+
+            <div id="subjectProgress"></div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+
+        <section id="quiz" class="page hidden">
+
+            <div class="quizContainer">
+
+                <div class="quizHeader">
+
+                    <div>
+
+                        <span id="quizSubject">
+                            AVIATION
+                        </span>
+
+                        <h1 id="quizNumber">
+                            Question 1
+                        </h1>
+
+                    </div>
+
+                    <div class="quizTimer">
+                        ⏱ <span id="timer">--:--</span>
+                    </div>
+
+                </div>
+
+
+                <div class="quizProgress">
+
+                    <div id="quizProgressBar"></div>
+
+                </div>
+
+
+                <div class="questionCard">
+
+                    <h2 id="questionText">
+                        Question
+                    </h2>
+
+                    <div
+                        id="answerOptions"
+                        class="answerOptions"
+                    ></div>
+
+                    <div
+                        id="answerExplanation"
+                        class="explanation hidden"
+                    ></div>
+
+                </div>
+
+
+                <div class="quizFooter">
+
+                    <button
+                        class="secondary"
+                        onclick="exitQuiz()"
+                    >
+                        Exit Quiz
+                    </button>
+
+                    <button
+                        id="nextButton"
+                        class="primary"
+                        onclick="nextQuestion()"
+                        disabled
+                    >
+                        Next Question →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="questions.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
